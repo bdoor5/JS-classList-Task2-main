@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Selecting an Element!</title>
+  <meta name="description" content="" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <ul class="container">
+      <li class="box" id="box-1"></li>
+      <li class="box box-to-select" id="box-2"></li>
+      <li class="box box-to-select" id="box-3"></li>
+      <li class="box box-to-select" id="box-4"></li>
+      <li class="box" id="box-5"></li>
+      <li class="box box-to-select-2" id="box-6"></li>
+      <li class="box box-to-select-2" id="box-7"></li>
+      <li class="box box-to-select-2" id="box-8"></li>
+    </ul>
+    <button class="btn-circle"> Circle & Black </button>
+    <button class="btn-rest"> Reset Color</button>
+    <button class="btn-toggle">Toggle </button>
+
+  </div>
+
+  <script>
+      //Get element by id
+      const box = document.getElementById("box-1");
+      box.addEventListener("click",function(event){
+        event.target.style.backgroundColor="#370665";
+      })
+        //Get element by className
+      var boxes=document.getElementsByClassName(" box-to-select");
+       //Iterate boxes through a For of loop to add functionallity
+      for(const element of boxes) {
+        element.addEventListener("click",function(event){
+          event.target.style.backgroundColor="#35589a";
+          console.log(event,"event");
+        });
+      }
+
+      //Get Element with qeurySelector
+       var queryfive=document.querySelector("#box-5");
+      queryfive.addEventListener("click",function(event){
+        event.target.style.backgroundColor="#f14a16";
+      })
+ 
+      //Get element by querySelectorAll
+      var queryall=document.querySelectorAll(".box-to-select-2");
+      //Iterate boxes through a For of loop to add functionallity
+      for(const element of queryall){
+        element.addEventListener("click",function(event){
+          event.target.style.backgroundColor="#fc9915";
+        })
+      }
+      //--------------------ADD Class circle to allboxes---------------
+      var circleBtn = document.querySelector(".btn-circle")
+      var allboxes = document.querySelectorAll(".box")
+      //Write code here
+      circleBtn.addEventListener("click",function()
+      {
+        for(const element of allboxes){
+          element.classList.add("circle")//classlist is property has alot of method(add,remove,..etc) , circle in css
+        }
+      })
+
+
+
+      //---------------------Remove Class circle from allboxes---------
+      var resetBtn = document.querySelector(".btn-rest")
+      resetBtn.addEventListener("click",function(){
+        for(const elemetn of allboxes){
+          elemetn.classList.remove("circle")
+        }
+      })
+      //Write code here
+
+      
+      //---------------------Toggle Class circle -----------------------
+      var toggleBtn = document.querySelector(".btn-toggle")
+      toggleBtn.addEventListener("click",function(){
+        for(const element of allboxes){
+          element.classList.toggle("circle")//toggle method means if class circle exist then removeit or if not exist then add it
+        }
+        console.log(box.classList.contains("circle"));//t or f if box contain class circle 
+      })
+      //Write code here
+
+
+  </script>
+</body>
+</html>
